@@ -3,16 +3,15 @@
 
 void print_arguments(char *argument)
 {
-    int i= 0;
     while(*argument != '\0')
     {
-        if(std::isalpha(argument[i]))
+        if(std::isalpha(*argument))
         {
-            std::cout << (char)std::toupper(*argument) << std::endl;
+            std::cout << (char)std::toupper(*argument);
         }  
         else
         {
-            std::cout << *argument << std::endl;
+            std::cout << *argument;
         }
         argument++;
     }
@@ -25,6 +24,7 @@ int main (int argc, char **argv)
     {
     std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
     }
+    argv++;
     while(*argv != NULL)
     {
         print_arguments(*argv);
