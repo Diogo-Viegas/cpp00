@@ -16,6 +16,14 @@ std::string Contact::getNickname()const
 {
     return (this->nickname);
 }
+std::string Contact::getPhone()const
+{
+    return(this->phone_number);
+}
+std::string Contact::getSecret()const
+{
+    return(this->darkest_secret);
+}
 void Contact::saveFirstName(std::string first)
 {
     this->first_name = first;

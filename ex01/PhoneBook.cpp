@@ -23,6 +23,23 @@ void PhoneBook::addContact()
     this->contacts[current_index].savePhone(phone);
     this->contacts[current_index].saveSecret(secret);
 
+    this->index++;
     std::cout << "Contact Sucessfuly Added" << std::endl;
 }
+void PhoneBook::ListContacts()
+{   
+        int current_index = this->index % 8;
+        std::cout << "===================="<< std::endl;
+        std::cout << "  List of Contacts  "<< std::endl;
+        std::cout << "===================="<< std::endl;
+    for(int i = 0; i < this->index; i++)
+    {
+    
+        std::cout << this->contacts[current_index].getFirstName()<< std::endl;
+        std::cout << this->contacts[current_index].getLastName()<< std::endl;
+        std::cout << this->contacts[current_index].getNickname()<< std::endl;
+        std::cout << this->contacts[current_index].getPhone()<< std::endl;
+        std::cout << this->contacts[current_index].getSecret()<< std::endl;
 
+        }
+}

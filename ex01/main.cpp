@@ -9,9 +9,9 @@ int main()
     while(option != "EXIT")
     {
         if(option == "ADD")
-        {
             phonebook.addContact();
-        }
+        if(option == "SEARCH")
+            phonebook.ListContacts();
     }
     
 }
