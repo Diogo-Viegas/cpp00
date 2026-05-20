@@ -26,5 +26,4 @@ class Contact
         Contact();
         ~Contact();
 };
-
 #endif

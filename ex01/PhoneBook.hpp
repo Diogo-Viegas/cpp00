@@ -12,6 +12,8 @@ class PhoneBook
          void addContact();
          void ListContacts();
          int getIndex();
+         void ShowDetails(Contact contact);
+         
 
 };
 #endif

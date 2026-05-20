@@ -2,6 +2,15 @@
 
 Contact::Contact()
 {
+    this->first_name = "";
+    this->last_name = "";
+    this->nickname = "";
+    this->phone_number = "";
+    this->darkest_secret = "";
+
+}
+Contact::~Contact()
+{
 
 }
 std::string Contact::getFirstName() const
@@ -44,3 +53,4 @@ void Contact::saveSecret(std::string secret)
 {
     this->darkest_secret = secret;
 }
+
