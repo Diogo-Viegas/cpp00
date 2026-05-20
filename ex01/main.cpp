@@ -21,11 +21,18 @@ int main()
     while(option != "EXIT")
     {
         show_menu();
-        std::getline(std::cin,option);
+        if(!std::getline(std::cin,option))
+            break;
         if(option == "ADD")
+        {
+            std::system("clear");
             phonebook.addContact();
+        }
         if(option == "SEARCH")
+        {
+            std::system("clear");
             phonebook.ListContacts();
+        }
     }
-    
+    return (0);
 }

@@ -1,5 +1,6 @@
 #include "PhoneBook.hpp"
 #include <iomanip>
+#include <algorithm>
 PhoneBook::PhoneBook()
 {
     this->index = 0;
@@ -31,6 +32,7 @@ std::string promptField(std::string fieldName)
             return ("");
         }
 
+        input.erase(std::remove_if(input.begin(), input.end(), ::isspace), input.end());        //clean spaces
         if (!input.empty())
         {
             break;
@@ -75,13 +77,14 @@ void PhoneBook::addContact()
 
 
     this->index++;
-
+    std::system("clear");
     std::cout << "────────────────────────────────────────────" << std::endl;
     std::cout << " 🎉 Contact successfully saved to index [" << targetPos << "]!" << std::endl;
     std::cout << "────────────────────────────────────────────" << std::endl;
 }
 void PhoneBook::ShowDetails(Contact contact)
 {
+    std::system("clear");
     std::string op;
     std::cout << "┌──────────────────────────────────────────┐" << std::endl;
     std::cout << "│             CONTACT DETAILS              │" << std::endl;
@@ -99,7 +102,10 @@ void PhoneBook::ShowDetails(Contact contact)
         std::cout << "Press Enter to Go Back to the Menu..." << std::endl;
         std::getline(std::cin,op);
     if(op.empty())
+    {
+        std::system("clear");
         return;
+    }
     else
         std::cout << "Unknown Command" << std::endl;
     }
@@ -113,7 +119,18 @@ void PhoneBook::ListContacts()
     if(limit == 0)
     {
         std::cout << "PhoneBook is Empty :(" << std::endl;
-        return;
+        while(true)
+        {
+            std::cout << "Press Enter to Go Back to the Menu..." << std::endl;
+            std::getline(std::cin,input_index);
+        if(input_index.empty())
+        {
+            std::system("clear");
+            return;
+        }
+        else
+            std::cout << "Unknown Command" << std::endl;
+        }
     }
     if(this->index >= 8)
     {
@@ -129,10 +146,10 @@ void PhoneBook::ListContacts()
     for(int count = 0; count < limit; count++)
     {
         int i = (older + count) % 8;
-        std::cout << "|" << std::setw(10) << std::right << i << "|";
-        std::cout <<  std::setw(10) << std::right << formatString(this->contacts[i].getFirstName())<< "|";
-        std::cout <<  std::setw(10) << std::right << formatString(this->contacts[i].getLastName()) << "|";
-        std::cout << std::setw(10) << std::right << formatString(this->contacts[i].getNickname()) << "|" << std::endl;
+        std::cout << "│" << std::setw(10) << std::right << i << "│";
+        std::cout <<  std::setw(10) << std::right << formatString(this->contacts[i].getFirstName())<< "│";
+        std::cout <<  std::setw(10) << std::right << formatString(this->contacts[i].getLastName()) << "│";
+        std::cout << std::setw(10) << std::right << formatString(this->contacts[i].getNickname()) << "│" << std::endl;
     }
 while (true)
     {
